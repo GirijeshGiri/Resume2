@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girijesh K - Resume</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, black, white);
+            color: black;
+            overflow-x: hidden;
+            text-align: center;
+        }
+        .navbar {
+            width: 100%;
+            background: black;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: gray;
+        }
+        .dropdown {
+            position: absolute;
+            top: 80px;
+            right: 20px;
+            cursor: pointer;
+            background: black;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .dropdown-content a {
+            display: block;
+            color: black;
+            padding: 8px;
+            text-decoration: none;
+        }
+        .dropdown-content a:hover {
+            background: lightgray;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: url('profile.jpg') center/cover;
+            margin: 20px auto;
+            border: 5px solid black;
+        }
+        .content {
+            margin-top: 100px;
+            display: none;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        .active {
+            display: block;
+        }
+        .download-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .download-btn:hover {
+            background: gray;
+        }
+        .social-icons img {
+            width: 40px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('about')">About</a>
+        <a onclick="showSection('contact')">Contact</a>
+    </div>
+    
+    <div class="dropdown" onclick="toggleDropdown()">Menu</div>
+    <div class="dropdown-content" id="dropdownMenu">
+        <a onclick="showSection('skills')">Skills</a>
+        <a onclick="showSection('projects')">Projects</a>
+        <a onclick="showSection('experience')">Experience</a>
+        <a onclick="showSection('internships')">Internships</a>
+        <a onclick="showSection('certificates')">Certificates</a>
+    </div>
+
+    <div id="home" class="content active">
+        <div class="profile-pic"></div>
+        <h1>Girijesh K</h1>
+        <p>Bachelor's Degree in Engineering</p>
+        <p>Certified in AI & Robotics</p>
+    </div>
+    
+    <div id="about" class="content">
+        <h1>About Me</h1>
+        <p>Click on the menu to see more details.</p>
+    </div>
+
+    <div id="skills" class="content">
+        <h1>Skills</h1>
+        <p>• Python, JavaScript, C++</p>
+        <p>• AI & Machine Learning</p>
+        <p>• Embedded Systems & IoT</p>
+    </div>
+
+    <div id="projects" class="content">
+        <h1>Projects</h1>
+        <p>• AI-Based Defect Detection System</p>
+        <p>• Smart Solar Panel Cleaning Robot</p>
+    </div>
+
+    <div id="experience" class="content">
+        <h1>Experience</h1>
+        <p>• Internship at XYZ Robotics (6 months)</p>
+        <p>• AI Developer at ABC Tech Solutions</p>
+    </div>
+
+    <div id="internships" class="content">
+        <h1>Internships</h1>
+        <p>• AI and IoT Internship at DEF Innovations</p>
+    </div>
+
+    <div id="certificates" class="content">
+        <h1>Certificates</h1>
+        <p>• AI & ML Certification - Coursera</p>
+        <p>• Embedded Systems Certification - Udemy</p>
+    </div>
+
+    <div id="contact" class="content">
+        <h1>Contact Me</h1>
+        <p><strong>Email:</strong> jeshgiri52@gmail.com</p>
+        <p><strong>Phone:</strong> 8122934681</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/girijesh-giri-73507631b" target="_blank"><img src="linkedin.png" alt="LinkedIn"></a>
+            <a href="#"><img src="facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="instagram.png" alt="Instagram"></a>
+        </div>
+        <button class="download-btn" onclick="downloadResume()">Download Resume</button>
+    </div>
+    
+    <script>
+        function showSection(id) {
+            let sections = document.querySelectorAll(".content");
+            sections.forEach(section => section.classList.remove("active"));
+            document.getElementById(id).classList.add("active");
+        }
+
+        function toggleDropdown() {
+            let menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
